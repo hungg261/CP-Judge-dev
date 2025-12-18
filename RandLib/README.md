@@ -1,6 +1,6 @@
-# StressTester
+# RandLib
 
-StressTester is a C++ template project designed for **competitive programming and algorithm testing**, leveraging the **RandLib** library for high-quality random generation. It allows you to quickly generate random numbers, strings, vectors, graphs, trees, and more to stress-test your algorithms.
+RandLib is a C++ template project designed for **competitive programming and algorithm testing**, leveraging the **RandLib** library for high-quality random generation. It allows you to quickly generate random numbers, strings, vectors, graphs, trees, and more to stress-test your algorithms.
 
 ---
 
@@ -12,8 +12,6 @@ StressTester is a C++ template project designed for **competitive programming an
 - Random graphs, trees, and DAGs
 - Weighted random selection
 - Deterministic random generation using seeds for reproducibility
-
-
 
 ## Author
 
