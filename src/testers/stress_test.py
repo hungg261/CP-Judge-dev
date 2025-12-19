@@ -5,4 +5,5 @@ import os
 script_dir = Path(__file__).resolve().parent
 os.chdir(script_dir)
 
-subprocess.run(["g++", "../generator/generator.cpp", "-o", "generator.exe"])
+def Compile():
+    subprocess.run(["g++", "../generator/generator.cpp", "-o", "generator.exe"])
