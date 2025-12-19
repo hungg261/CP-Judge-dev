@@ -1,0 +1,14 @@
+{
+    "info": {
+        "name": "CP-Judge",
+        "version": "incomplete",
+        "author": "hungg261"
+    },
+
+    "configs": {
+        "language": {
+            "python": "src/solutions/Python",
+            "cpp": "src/solutions/CPP"
+        }
+    }
+}
