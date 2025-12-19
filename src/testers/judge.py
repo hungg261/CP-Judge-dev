@@ -1,32 +1,14 @@
+import subprocess
+from pathlib import Path
 import os
+import argparse
 
-def FilenameSet(directory):
-    stems = set()
+script_dir = Path(__file__).resolve().parent
+os.chdir(script_dir)
 
-    for name in os.listdir(directory):
-        full_path = os.path.join(directory, name)
+def Generate(test):
+    subprocess.run(["generator.exe", str(test)], check=True)
 
-        if os.path.isfile(full_path):
-            stem, _ = os.path.splitext(name)
-            stems.add(stem)
+def RunSolution(test):
+    return
 
-    return stems
-
-def Scan(directory, outputSet):
-    files = os.listdir(directory)
-    
-    if not files:
-        print(f"The directory {directory} is empty.")
-    
-    files.sort()
-    
-    for file in files:
-        file_name, file_path = os.path.splitext(file)
-        print(file_name, file_path)
-        
-        print(outputSet.insert)
-        
-
-# Example usage with a corrected path
-directory_path = "src/data/inputs"  # Use forward slashes or double backslashes
-Scan(directory_path)
