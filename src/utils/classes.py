@@ -1,5 +1,6 @@
-from run import Run_BruteForce, Run_Solution
-from prepare import CompileGenerator, CompileSolution
+from utils.run import RunSolvers, GenerateTest
+from utils.prepare import CompileGenerator, CompileSolvers
+from utils.diff import compare
 
 class TestCase:
     def __init__(self, id, brute_lang, sol_lang):
@@ -7,15 +8,23 @@ class TestCase:
         self.brute_lang = brute_lang
         self.sol_lang = sol_lang
         
-    def Compile():
+    def Compile(self):
         CompileGenerator()
-        CompileSolution()
+        CompileSolvers(self.brute_lang, self.sol_lang)
         
     def Run(self):
-        Run_BruteForce(self.brute_lang)
-        Run_Solution(self.sol_lang)
+        GenerateTest(self.id)
+        RunSolvers(self.brute_lang, self.sol_lang)
+    
+    @staticmethod
+    def accepted():
+        return compare()
         
 
 if __name__ == "__main__":
-    test = TestCase(12, "c++", "c++")
+    test = TestCase(12, "python", "python")
+    test.Compile()
+    
     test.Run()
+    
+    print(test.accepted())

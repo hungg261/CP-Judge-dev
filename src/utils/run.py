@@ -43,21 +43,11 @@ def Run_Solution(lang):
     else:
         CPP.Solution()
         
+def RunSolvers(brute_lang, sol_lang):
+    Run_BruteForce(brute_lang)
+    Run_Solution(sol_lang)
 
 if __name__ == "__main__":
-    import json
-
-    def load_json(path):
-        try:
-            with open(path, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except FileNotFoundError:
-            print(f"{path} not found")
-        except json.JSONDecodeError:
-            print(f"{path} is not valid JSON")
-        return None
-    config = load_json("src/config.json")
     GenerateTest(36)
     
-    Run_BruteForce("python")
-    Run_Solution("c++")
+    RunSolvers("c++", "python")
