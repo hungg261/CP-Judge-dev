@@ -1,5 +1,5 @@
-from packages.prepare import CompileGenerator, CompileSolution
-from packages.run import RunSolution
+from utils.prepare import CompileGenerator, CompileSolution
+from utils.run import RunSolution
 import json
 
 def load_config(path):

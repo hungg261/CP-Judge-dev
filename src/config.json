@@ -6,9 +6,9 @@
     },
 
     "config": {
-        "language": {
-            "python": ["src/solutions/Python", ".py"],
-            "c++": ["src/solutions/CPP", ".cpp"]
-        }
+        "languages": [
+            "python",
+            "c++"
+        ]
     }
 }
