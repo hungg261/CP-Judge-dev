@@ -29,7 +29,7 @@ class Instance:
             WORKSPACE_COUNTER += 1
     
     def init(self):
-        Compile(self.brute_lang, self.sol_lang)
+        Compile(self.brute_lang, self.sol_lang, self.sessionID)
         if not os.path.exists(f"src/data/{self.sessionID}"):
             os.mkdir(f"src/data/{self.sessionID}")
     
@@ -65,17 +65,26 @@ if __name__ == "__main__":
         ins.SampleRun(output=False)
         print(f"[!] #{id} - Finished")
 
-    t1 = threading.Thread(target=test_run, args=(1,100,))
-    t2 = threading.Thread(target=test_run, args=(2,69,))
-    t3 = threading.Thread(target=test_run, args=(3,58,))
-    t4 = threading.Thread(target=test_run, args=(4,14,))
+    t1 = threading.Thread(target=test_run, args=(1, 100,))
+    t2 = threading.Thread(target=test_run, args=(2, 69,))
+    t3 = threading.Thread(target=test_run, args=(3, 58,))
+    t4 = threading.Thread(target=test_run, args=(4, 14,))
+    t5 = threading.Thread(target=test_run, args=(5, 5,))
+    t6 = threading.Thread(target=test_run, args=(6, 57,))
     
     t1.start()
     t2.start()
     t3.start()
     t4.start()
+    t5.start()
+    t6.start()
     
     t1.join()
     t2.join()
     t3.join()
     t4.join()
+    t5.join()
+    t6.join()
+    
+    from utils.clean import cleanup_workspaces
+    cleanup_workspaces()
