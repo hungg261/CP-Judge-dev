@@ -7,21 +7,21 @@ def Compile(brute_lang, sol_lang):
     CompileSolvers(brute_lang, sol_lang)
 
 class TestCase:
-    def __init__(self, id, brute_lang, sol_lang):
+    def __init__(self, id, brute_lang, sol_lang, sessionID):
         self.id = id
         self.brute_lang = brute_lang
         self.sol_lang = sol_lang
+        self.sessionID = sessionID
         
     def Preprocess(self):
         Compile(self.brute_lang, self.sol_lang)
         
     def Run(self):
-        GenerateTest(self.id)
-        RunSolvers(self.brute_lang, self.sol_lang)
+        GenerateTest(self.id, self.sessionID)
+        RunSolvers(self.brute_lang, self.sol_lang, self.sessionID)
     
-    @staticmethod
-    def accepted():
-        return compare()
+    def accepted(self):
+        return compare(self.sessionID)
         
 
 if __name__ == "__main__":
