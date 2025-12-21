@@ -6,9 +6,10 @@
     },
 
     "config": {
-        "languages": [
-            "python",
-            "c++"
-        ]
+        "tests-count": 100,
+        "languages": {
+            "brute_force": "python",
+            "solution": "c++"
+        }
     }
 }

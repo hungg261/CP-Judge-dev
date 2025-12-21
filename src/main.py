@@ -11,10 +11,34 @@ def load_config(path):
         print(f"{path} is not valid JSON")
     return None
 
+class Instance:
+    def __init__(self):
+        self.config = load_config("src/config.json")
+        self.NTEST = self.config["config"]["tests-count"]
+        
+        self.brute_lang = self.config["config"]["languages"]["brute_force"]
+        self.sol_lang = self.config["config"]["languages"]["solution"]
+    
+    def RunTest(self, test):
+        TCase = TestCase(test, self.brute_lang, self.sol_lang)
+        TCase.Run()
+        
+        return TCase.accepted()
+        
+    def Run(self):
+        for test in range(1, self.NTEST + 1):
+            print(f"Running test #{test}:")
+            
+            if(not self.RunTest(test)):
+                print("WRONG ANSWER!")
+                return -1
+            
+            print("CORRECT")
+        
+        return 0
+
 if __name__ == "__main__":
-    test = TestCase(36, "python", "c++")
-    test.Compile()
+    config = load_config("src/config.json")
     
-    test.Run()
-    
-    print(test.accepted())
+    ins = Instance()
+    print(ins.Run())
