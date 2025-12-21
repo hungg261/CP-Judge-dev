@@ -9,7 +9,7 @@
         "tests-count": 100,
         "languages": {
             "brute_force": "python",
-            "solution": "c++"
+            "solution": "python"
         }
     }
 }

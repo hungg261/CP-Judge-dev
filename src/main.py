@@ -1,4 +1,4 @@
-from utils.classes import TestCase
+from utils.classes import TestCase, Compile
 import json
 
 def load_config(path):
@@ -19,6 +19,9 @@ class Instance:
         self.brute_lang = self.config["config"]["languages"]["brute_force"]
         self.sol_lang = self.config["config"]["languages"]["solution"]
     
+    def init(self):
+        Compile(self.brute_lang, self.sol_lang)
+    
     def RunTest(self, test):
         TCase = TestCase(test, self.brute_lang, self.sol_lang)
         TCase.Run()
@@ -31,14 +34,16 @@ class Instance:
             
             if(not self.RunTest(test)):
                 print("WRONG ANSWER!")
-                return -1
+                return False
             
             print("CORRECT")
         
-        return 0
+        return True
 
 if __name__ == "__main__":
     config = load_config("src/config.json")
     
     ins = Instance()
+    ins.init()
+    
     print(ins.Run())

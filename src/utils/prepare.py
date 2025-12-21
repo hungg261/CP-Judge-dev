@@ -54,5 +54,5 @@ def CompileSolvers(brute_lang, sol_lang):
 
 if __name__ == "__main__":    
     CompileGenerator()
-    CompileSolvers("c++", "c++")
+    CompileSolvers("python", "c++")
     
