@@ -69,5 +69,5 @@ if __name__ == "__main__":
     for t in lthread:
         t.join()
     
-    # from utils.clean import cleanup_workspaces
-    # cleanup_workspaces("workspace-*")
+    from utils.clean import cleanup_workspaces
+    cleanup_workspaces("workspace-*")
