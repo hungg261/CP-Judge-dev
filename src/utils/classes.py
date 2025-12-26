@@ -1,6 +1,6 @@
 from utils.run import RunSolvers, GenerateTest
 from utils.prepare import CompileGenerator, CompileSolvers
-from utils.diff import compare
+from utils.diff import compare, fc_compare
 import os
 
 def Compile(brute_lang, sol_lang, sessionID):

@@ -2,6 +2,7 @@ from utils.classes import TestCase, Compile
 from utils.file import load_config
 import os
 import uuid
+import multiprocessing
 
 WORKSPACE_COUNTER = 0
 CONFIG = load_config("src/config.json")
@@ -45,23 +46,26 @@ class Instance:
         
         return True
 
-if __name__ == "__main__":
-    import threading
-    import random
+import random
+def test_run(id, ntest):
+    ins = Instance(NTEST=ntest)
+    ins.init()
     
-    def test_run(id, ntest):
-        ins = Instance(NTEST=ntest)
-        ins.init()
-        
-        ins.SampleRun(output=False)
-        print(f"[!] #{id} - Finished")
+    ins.SampleRun(output=False)
+    print(f"[!] #{id} - Finished")
+    
+if __name__ == "__main__":
+    # ins = Instance(NTEST=50)
+    # ins.init()
+    
+    # ins.SampleRun()
 
     lthread = []
     for i in range(10):
         nt = random.randint(1, 100)
         print(f"#{i}: ", nt)
         
-        thread = threading.Thread(target=test_run, args=(i, nt))
+        thread = multiprocessing.Process(target=test_run, args=(i, nt))
         thread.start()
         
         lthread.append(thread)
