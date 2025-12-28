@@ -7,9 +7,10 @@
 
     "config": {
         "tests-count": 100,
+        "time-limit": 1000, 
         "languages": {
             "brute_force": "c++",
-            "solution": "python"
+            "solution": "c++"
         }
     },
 

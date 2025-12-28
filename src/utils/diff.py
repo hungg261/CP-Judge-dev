@@ -11,4 +11,4 @@ def fc_compare(sessionID):
 
 if __name__ == "__main__":
     print(os.getcwd())
-    print(fc_compare("WORKSPACE-526C3279F3BC4B4DBBA91505BDBDFC4E"))
+    print(compare("workspace-9d8b5b6ade9a4c8b9b3d2e91b78653aa"))

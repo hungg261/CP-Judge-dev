@@ -1,6 +1,6 @@
-from utils.run import RunSolvers, GenerateTest
-from utils.prepare import CompileGenerator, CompileSolvers
-from utils.diff import compare, fc_compare
+from .run import RunSolvers, GenerateTest
+from .prepare import CompileGenerator, CompileSolvers
+from .diff import compare
 import os
 
 def Compile(brute_lang, sol_lang, sessionID):
@@ -11,19 +11,22 @@ def Compile(brute_lang, sol_lang, sessionID):
     CompileSolvers(brute_lang, sol_lang, sessionID)
 
 class TestCase:
-    def __init__(self, id, brute_lang, sol_lang, sessionID):
+    def __init__(self, id, brute_lang, sol_lang, sessionID, time_limit = 1000):
         self.id = id
         self.brute_lang = brute_lang
         self.sol_lang = sol_lang
         
         self.sessionID = sessionID
+        self.time_limit = time_limit
         
     def Preprocess(self):
         Compile(self.brute_lang, self.sol_lang, self.sessionID)
         
     def Run(self):
         GenerateTest(self.id, self.sessionID)
-        RunSolvers(self.brute_lang, self.sol_lang, self.sessionID)
+        
+        runStat = RunSolvers(self.brute_lang, self.sol_lang, self.sessionID, self.time_limit / 1000)
+        return runStat
     
     def accepted(self):
         return compare(self.sessionID)
